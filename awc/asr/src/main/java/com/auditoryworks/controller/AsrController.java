@@ -1,22 +1,20 @@
 package com.auditoryworks.controller;
 
-import com.auditoryworks.domain.Device;
-import com.auditoryworks.service.DeviceService;
+import com.auditoryworks.domain.Asr;
+import com.auditoryworks.service.AsrService;
 import com.auditoryworks.status.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
 import java.util.List;
 
 @RestController
-public class BirdController {
+public class AsrController {
     @Autowired
-    DeviceService deviceService;
+    AsrService asrService;
 
     @GetMapping("/ping")
     @PreAuthorize("hasAnyAuthority('query')")
@@ -27,30 +25,30 @@ public class BirdController {
     @GetMapping("/user")
     @PreAuthorize("hasAnyAuthority('query')")
     public String principal() {
-        return deviceService.user();
+        return asrService.user();
     }
 
-    @GetMapping("/bind")
+    @GetMapping("/save")
     @PreAuthorize("hasAnyAuthority('query')")
-    public Message bindDevice(String deviceId){
-        return deviceService.bindDevice(deviceId);
+    public Message save(Asr asr) {
+        return asrService.saveAsr(asr);
     }
 
-    @GetMapping("/relieve")
+    @GetMapping("/delete")
     @PreAuthorize("hasAnyAuthority('query')")
-    public Message relieveDevice(String deviceId){
-        return deviceService.relieveDevice(deviceId);
+    public Message delete(String id) {
+        return asrService.deleteAsrById(id);
     }
 
     @GetMapping("/all")
     @PreAuthorize("hasAnyAuthority('query')")
-    public List<Device> findAll(){
-        return deviceService.findAllDevice();
+    public List<Asr> findAll() {
+        return asrService.findAll();
     }
 
-    @GetMapping("/device")
+    @GetMapping("/page")
     @PreAuthorize("hasAnyAuthority('query')")
-    public Page<Device> findPage(int pagenum,int pagesize){
-        return deviceService.findPageDevice(pagenum,pagesize);
+    public Page<Asr> findPage(int pagenum, int pagesize) {
+        return asrService.findPage(pagenum,pagesize);
     }
 }

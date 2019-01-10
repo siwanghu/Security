@@ -14,6 +14,7 @@
         <module>auth</module>
         <module>gateway</module>
         <module>bird</module>
+        <module>asr</module>
     </modules>
 
     <name>asrcloud</name>

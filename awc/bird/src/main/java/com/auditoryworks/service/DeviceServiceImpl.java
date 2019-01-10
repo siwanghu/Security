@@ -4,6 +4,10 @@ import com.auditoryworks.status.Message;
 import com.auditoryworks.domain.Device;
 import com.auditoryworks.repository.DeviceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -50,6 +54,13 @@ public class DeviceServiceImpl implements DeviceService{
     @Override
     public List<Device> findAllDevice() {
         return deviceRepository.findByUser(user());
+    }
+
+    @Override
+    public Page<Device> findPageDevice(int pageNum,int pageSize) {
+        Sort sort = new Sort(Sort.Direction.ASC,"update");
+        Pageable pageable = new PageRequest(pageNum,pageSize,sort);
+        return deviceRepository.findByUser(user(),pageable);
     }
 
     @Override

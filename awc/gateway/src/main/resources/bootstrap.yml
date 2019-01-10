@@ -16,10 +16,14 @@ zuul:
       path: /uaa/**
       sensitiveHeaders: "*"
       serviceId: auth-service
-    order:
+    bird:
       path: /bird/**
       sensitiveHeaders: "*"
       serviceId: bird-service
+    asr:
+      path: /asr/**
+      sensitiveHeaders: "*"
+      serviceId: asr-service
   add-proxy-headers: true
 
 security:
