@@ -52,13 +52,8 @@ public class DeviceServiceImpl implements DeviceService{
     }
 
     @Override
-    public List<Device> findAllDevice() {
-        return deviceRepository.findByUser(user());
-    }
-
-    @Override
-    public Page<Device> findPageDevice(int pageNum,int pageSize) {
-        Sort sort = new Sort(Sort.Direction.ASC,"update");
+    public Page<Device> findPage(int pageNum,int pageSize) {
+        Sort sort = new Sort(Sort.Direction.ASC,"id");
         Pageable pageable = new PageRequest(pageNum,pageSize,sort);
         return deviceRepository.findByUser(user(),pageable);
     }

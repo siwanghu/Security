@@ -23,16 +23,15 @@ public class AsrServiceImpl implements AsrService {
 
     @Override
     public Message saveAsr(Asr asr) {
-        asr.setId(UUID.randomUUID().toString());
-        asr.setUpdate(new Date());
+        asr.setDeadline(new Date());
         asr.setUser(user());
         asrRepository.save(asr);
         return new Message(true,"保存成功",new Date().getTime());
     }
 
     @Override
-    public Message deleteAsrById(String id) {
-        Asr existing=asrRepository.queryById(id);
+    public Message deleteAsrById(Long id) {
+        Asr existing=asrRepository.findById(id);
         if(existing==null){
             return new Message(false,"当前指定的文章不存在",new Date().getTime());
         }else{
@@ -47,14 +46,9 @@ public class AsrServiceImpl implements AsrService {
 
     @Override
     public Page<Asr> findPage(int pageNum,int pageSize) {
-        Sort sort = new Sort(Sort.Direction.ASC,"update");
+        Sort sort = new Sort(Sort.Direction.ASC,"id");
         Pageable pageable = new PageRequest(pageNum,pageSize,sort);
-        return asrRepository.queryByUser(user(),pageable);
-    }
-
-    @Override
-    public List<Asr> findAll() {
-        return asrRepository.queryByUser(user());
+        return asrRepository.findByUser(user(),pageable);
     }
 
     @Override

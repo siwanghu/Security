@@ -1,29 +1,32 @@
 package com.auditoryworks.domain;
+import com.auditoryworks.domain.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
+import lombok.EqualsAndHashCode;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.Instant;
 import java.util.Date;
 
+@Entity
 @Data
-@AllArgsConstructor
-@Document(indexName = "asr", type = "result", shards = 2, replicas = 1, refreshInterval = "-1")
-public class Asr {
+@EqualsAndHashCode(callSuper = false)
+public class Asr extends BaseEntity {
     @Id
-    private String id;
-    @Field
+    @GeneratedValue
+    private Long id;
+
     private String title;
-    @Field
+
     private Long time;
-    @Field
+
     private Long  important;
-    @Field
-    private Date update;
-    @Field
-    private String context;
-    @Field
+
+    private Date deadline;
+
+    private String sessionId;
+
     private String user;
 }

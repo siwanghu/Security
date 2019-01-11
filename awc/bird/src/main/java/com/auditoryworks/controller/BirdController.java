@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
@@ -30,27 +32,21 @@ public class BirdController {
         return deviceService.user();
     }
 
-    @GetMapping("/bind")
+    @PutMapping("/bind")
     @PreAuthorize("hasAnyAuthority('query')")
     public Message bindDevice(String deviceId){
         return deviceService.bindDevice(deviceId);
     }
 
-    @GetMapping("/relieve")
+    @DeleteMapping("/relieve")
     @PreAuthorize("hasAnyAuthority('query')")
     public Message relieveDevice(String deviceId){
         return deviceService.relieveDevice(deviceId);
     }
 
-    @GetMapping("/all")
-    @PreAuthorize("hasAnyAuthority('query')")
-    public List<Device> findAll(){
-        return deviceService.findAllDevice();
-    }
-
     @GetMapping("/device")
     @PreAuthorize("hasAnyAuthority('query')")
     public Page<Device> findPage(int pagenum,int pagesize){
-        return deviceService.findPageDevice(pagenum,pagesize);
+        return deviceService.findPage(pagenum,pagesize);
     }
 }

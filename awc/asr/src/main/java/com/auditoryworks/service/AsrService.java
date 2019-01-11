@@ -8,8 +8,7 @@ import java.util.List;
 
 public interface AsrService {
     Message saveAsr(Asr asr);
-    Message deleteAsrById(String id);
+    Message deleteAsrById(Long id);
     Page<Asr> findPage(int pageNum,int pageSize);
-    List<Asr> findAll();
     String user();
 }

@@ -10,7 +10,6 @@ import java.util.List;
 public interface DeviceService {
      Message bindDevice(String deviceId);
      Message relieveDevice(String deviceId);
-     List<Device> findAllDevice();
-     Page<Device> findPageDevice(int pageNum,int pageSize);
+     Page<Device> findPage(int pageNum,int pageSize);
      String user();
 }

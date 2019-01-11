@@ -6,7 +6,9 @@ import com.auditoryworks.status.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,25 +30,19 @@ public class AsrController {
         return asrService.user();
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     @PreAuthorize("hasAnyAuthority('query')")
     public Message save(Asr asr) {
         return asrService.saveAsr(asr);
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     @PreAuthorize("hasAnyAuthority('query')")
-    public Message delete(String id) {
+    public Message delete(Long id) {
         return asrService.deleteAsrById(id);
     }
 
-    @GetMapping("/all")
-    @PreAuthorize("hasAnyAuthority('query')")
-    public List<Asr> findAll() {
-        return asrService.findAll();
-    }
-
-    @GetMapping("/page")
+    @GetMapping("/asr")
     @PreAuthorize("hasAnyAuthority('query')")
     public Page<Asr> findPage(int pagenum, int pagesize) {
         return asrService.findPage(pagenum,pagesize);
