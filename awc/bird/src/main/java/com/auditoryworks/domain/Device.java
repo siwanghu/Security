@@ -1,6 +1,5 @@
 package com.auditoryworks.domain;
 
-import com.auditoryworks.domain.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,12 +11,12 @@ import java.io.Serializable;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Device extends BaseEntity {
+public class Device {
     @Id
     @GeneratedValue
     private Long id;
 
     private String deviceId;
 
-    private String user;
+    private String userName;
 }

@@ -1,12 +1,12 @@
 package com.auditoryworks.service;
 
 import com.auditoryworks.domain.Authority;
+import com.auditoryworks.domain.Message;
 import com.auditoryworks.domain.Role;
 import com.auditoryworks.domain.User;
 import com.auditoryworks.repository.AuthorityRepository;
 import com.auditoryworks.repository.RoleRepository;
 import com.auditoryworks.repository.UserRepository;
-import com.auditoryworks.status.Message;
 import com.google.common.collect.Sets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

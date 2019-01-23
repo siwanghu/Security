@@ -1,5 +1,4 @@
 package com.auditoryworks.domain;
-import com.auditoryworks.domain.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,20 +12,32 @@ import java.util.Date;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Asr extends BaseEntity {
+public class Asr{
     @Id
     @GeneratedValue
     private Long id;
 
     private String title;
 
-    private Long time;
+    private Long duration;
 
-    private Long  important;
+    private int  important;
 
-    private Date deadline;
+    private Date saveTime;
+
+    private Date updateTime;
+
+    private String deviceId;
 
     private String sessionId;
 
-    private String user;
+    private int ip;
+
+    private int port;
+
+    private Long startTime;
+
+    private Long endTime;
+
+    private String userName;
 }

@@ -1,7 +1,7 @@
 package com.auditoryworks.service;
 
 import com.auditoryworks.domain.Asr;
-import com.auditoryworks.status.Message;
+import com.auditoryworks.domain.Message;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.auditoryworks.service;
 
-import com.auditoryworks.status.Message;
 import com.auditoryworks.domain.Device;
+import com.auditoryworks.domain.Message;
 import com.auditoryworks.repository.DeviceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,7 +30,7 @@ public class DeviceServiceImpl implements DeviceService{
         }else{
             Device bind=new Device();
             bind.setDeviceId(deviceId);
-            bind.setUser(user());
+            bind.setUserName(user());
             deviceRepository.save(bind);
             return new Message(true,"设备绑定成功",new Date().getTime());
         }
@@ -42,7 +42,7 @@ public class DeviceServiceImpl implements DeviceService{
         if(device==null){
             return new Message(false,"当前设备没有绑定任何主人，不可以解绑",new Date().getTime());
         }else{
-            if(!device.getUser().equals(user())){
+            if(!device.getUserName().equals(user())){
                 return new Message(false,"你不是该设备的主人，无法解绑",new Date().getTime());
             }else{
                 deviceRepository.deleteByDeviceId(deviceId);
@@ -55,7 +55,7 @@ public class DeviceServiceImpl implements DeviceService{
     public Page<Device> findPage(int pageNum,int pageSize) {
         Sort sort = new Sort(Sort.Direction.ASC,"id");
         Pageable pageable = new PageRequest(pageNum,pageSize,sort);
-        return deviceRepository.findByUser(user(),pageable);
+        return deviceRepository.findByUserName(user(),pageable);
     }
 
     @Override

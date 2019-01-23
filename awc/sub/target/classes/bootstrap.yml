@@ -1,0 +1,23 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka/
+
+spring:
+  application:
+    name: sub-service
+  profiles:
+      active: ${SPRING_PROFILES_ACTIVE:dev}
+  redis:
+    host: 47.100.241.183
+    port: 6379
+    password: wsroot
+
+server:
+  port: 8086
+security:
+  oauth2:
+    resource:
+      id: sub-service
+      user-info-uri: http://localhost:5000/user
+      prefer-token-info: false

@@ -1,12 +1,12 @@
 package com.auditoryworks.controller;
 
 import com.auditoryworks.domain.Authority;
+import com.auditoryworks.domain.Message;
 import com.auditoryworks.domain.Role;
 import com.auditoryworks.domain.User;
 import com.auditoryworks.repository.AuthorityRepository;
 import com.auditoryworks.repository.RoleRepository;
 import com.auditoryworks.service.UserService;
-import com.auditoryworks.status.Message;
 import com.google.common.collect.Sets;
 import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;

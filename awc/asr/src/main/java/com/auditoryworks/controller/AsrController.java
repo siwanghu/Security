@@ -1,8 +1,8 @@
 package com.auditoryworks.controller;
 
 import com.auditoryworks.domain.Asr;
+import com.auditoryworks.domain.Message;
 import com.auditoryworks.service.AsrService;
-import com.auditoryworks.status.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;

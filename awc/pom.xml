@@ -15,6 +15,9 @@
         <module>gateway</module>
         <module>bird</module>
         <module>asr</module>
+        <module>sock</module>
+        <module>comn</module>
+        <module>sub</module>
     </modules>
 
     <name>asrcloud</name>

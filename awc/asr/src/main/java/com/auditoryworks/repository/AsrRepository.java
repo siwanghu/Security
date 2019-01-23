@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface AsrRepository  extends JpaRepository<Asr, Long> {
     Asr findById(Long id);
-    Page<Asr> findByUser(String user, Pageable pageable);
+    Page<Asr> findByUserName(String user, Pageable pageable);
 }

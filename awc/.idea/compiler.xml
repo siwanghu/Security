@@ -9,9 +9,16 @@
         <module name="asr" />
         <module name="auth" />
         <module name="bird" />
+        <module name="comn" />
         <module name="eureka" />
         <module name="gateway" />
+        <module name="push" />
+        <module name="sock" />
+        <module name="sub" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="push" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

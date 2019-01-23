@@ -1,8 +1,8 @@
 package com.auditoryworks.service;
 
 import com.auditoryworks.domain.Asr;
+import com.auditoryworks.domain.Message;
 import com.auditoryworks.repository.AsrRepository;
-import com.auditoryworks.status.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,8 +23,8 @@ public class AsrServiceImpl implements AsrService {
 
     @Override
     public Message saveAsr(Asr asr) {
-        asr.setDeadline(new Date());
-        asr.setUser(user());
+        asr.setSaveTime(new Date());
+        asr.setUserName(user());
         asrRepository.save(asr);
         return new Message(true,"保存成功",new Date().getTime());
     }
@@ -35,7 +35,7 @@ public class AsrServiceImpl implements AsrService {
         if(existing==null){
             return new Message(false,"当前指定的文章不存在",new Date().getTime());
         }else{
-            if(!existing.getUser().equals(user())){
+            if(!existing.getUserName().equals(user())){
                 return new Message(false,"不是文章所有者，没有删除文章的权限",new Date().getTime());
             }else{
                 asrRepository.delete(existing);
@@ -48,7 +48,7 @@ public class AsrServiceImpl implements AsrService {
     public Page<Asr> findPage(int pageNum,int pageSize) {
         Sort sort = new Sort(Sort.Direction.ASC,"id");
         Pageable pageable = new PageRequest(pageNum,pageSize,sort);
-        return asrRepository.findByUser(user(),pageable);
+        return asrRepository.findByUserName(user(),pageable);
     }
 
     @Override

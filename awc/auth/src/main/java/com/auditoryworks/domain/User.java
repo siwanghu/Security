@@ -20,6 +20,7 @@ public class User extends BaseEntity implements UserDetails {
     @GeneratedValue
     private Long id;
     private String username;
+    private String nickname;
     private String password;
     private String firstName;
     private String lastName;

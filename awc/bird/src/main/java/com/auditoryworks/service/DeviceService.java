@@ -1,7 +1,7 @@
 package com.auditoryworks.service;
 
-import com.auditoryworks.status.Message;
 import com.auditoryworks.domain.Device;
+import com.auditoryworks.domain.Message;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetails;
 

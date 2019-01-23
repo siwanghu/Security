@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface DeviceRepository extends JpaRepository<Device, Long> {
     Device findByDeviceId(String deviceId);
-    Page<Device> findByUser(String user, Pageable pageable);
+    Page<Device> findByUserName(String user, Pageable pageable);
     void deleteByDeviceId(String deviceId);
 }

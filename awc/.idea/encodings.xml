@@ -5,7 +5,12 @@
     <file url="file://$PROJECT_DIR$/asr" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/auth" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bird" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comn" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/push" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/push" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sock" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sub" charset="UTF-8" />
   </component>
 </project>

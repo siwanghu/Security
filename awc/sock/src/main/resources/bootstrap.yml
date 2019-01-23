@@ -1,0 +1,28 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka/
+
+spring:
+  application:
+    name: sock-service
+  profiles:
+      active: ${SPRING_PROFILES_ACTIVE:dev}
+  data:
+    mongodb:
+      database: message
+      host: 47.100.241.183
+      port: 27017
+  redis:
+    host: 47.100.241.183
+    port: 6379
+    password: wsroot
+
+server:
+  port: 8085
+security:
+  oauth2:
+    resource:
+      id: sock-service
+      user-info-uri: http://localhost:5000/user
+      prefer-token-info: false
